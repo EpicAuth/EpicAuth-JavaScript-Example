@@ -1,4 +1,4 @@
-import KeyAuth from "./keyauth";
+import EpicAuth from "./EpicAuth";
 import { createInterface } from "readline/promises";
 
 const readline = createInterface({
@@ -7,7 +7,7 @@ const readline = createInterface({
   terminal: false, 
 });
 
-const KeyAuthApp = new KeyAuth({
+const EpicAuthApp = new EpicAuth({
   name: "",
   ownerid: "",
   version: "",
@@ -15,7 +15,7 @@ const KeyAuthApp = new KeyAuth({
 
 async function answer() {
   try {
-    await KeyAuthApp.init();
+    await EpicAuthApp.init();
 
     console.log("[1] Login\n[2] Register\n[3] License\n[4] Upgrade");
 
@@ -30,7 +30,7 @@ async function answer() {
       case 1:
         username = await readline.question("Username: ");
         password = await readline.question("Password: ");
-        await KeyAuthApp.login(username, password);
+        await EpicAuthApp.login(username, password);
         dashboard();
         break;
 
@@ -38,20 +38,20 @@ async function answer() {
         username = await readline.question("Username: ");
         password = await readline.question("Password: ");
         license = await readline.question("License: ");
-        await KeyAuthApp.register(username, password, license);
+        await EpicAuthApp.register(username, password, license);
         dashboard();
         break;
 
       case 3:
         license = await readline.question("License: ");
-        await KeyAuthApp.license(license);
+        await EpicAuthApp.license(license);
         dashboard();
         break;
 
       case 4:
         username = await readline.question("Username: ");
         license = await readline.question("License: ");
-        await KeyAuthApp.upgrade(username, license);
+        await EpicAuthApp.upgrade(username, license);
         dashboard();
         break;
 
@@ -71,20 +71,20 @@ async function answer() {
 answer();
 
 async function dashboard() {
-  await KeyAuthApp.fetchStats();
+  await EpicAuthApp.fetchStats();
   console.log("Application data:");
-  console.log("  App Version: ", KeyAuthApp.app_data?.app_ver);
-  console.log("  Customer panel: ", KeyAuthApp.app_data?.customer_panel);
-  console.log("  Number of Keys: ", KeyAuthApp.app_data?.numKeys);
-  console.log("  Number of Users: ", KeyAuthApp.app_data?.numUsers);
-  console.log("  Online Users: ", KeyAuthApp.app_data?.onlineUsers);
+  console.log("  App Version: ", EpicAuthApp.app_data?.app_ver);
+  console.log("  Customer panel: ", EpicAuthApp.app_data?.customer_panel);
+  console.log("  Number of Keys: ", EpicAuthApp.app_data?.numKeys);
+  console.log("  Number of Users: ", EpicAuthApp.app_data?.numUsers);
+  console.log("  Online Users: ", EpicAuthApp.app_data?.onlineUsers);
 
   console.log("\nUser data:");
-  console.log("  Username: ", KeyAuthApp.user_data?.username);
-  console.log("  IP Address: ", KeyAuthApp.user_data?.ip);
-  console.log("  Hardware-id: ", KeyAuthApp.user_data?.hwid);
+  console.log("  Username: ", EpicAuthApp.user_data?.username);
+  console.log("  IP Address: ", EpicAuthApp.user_data?.ip);
+  console.log("  Hardware-id: ", EpicAuthApp.user_data?.hwid);
 
-  const subs = KeyAuthApp.user_data?.subscriptions || [] as Array<{
+  const subs = EpicAuthApp.user_data?.subscriptions || [] as Array<{
     subscription: string;
     key: string;
     expiry: string;
@@ -100,17 +100,17 @@ async function dashboard() {
 
   console.log(
     `Created at: ${new Date(
-      (KeyAuthApp.user_data?.createdate || 0) * 1000
+      (EpicAuthApp.user_data?.createdate || 0) * 1000
     ).toLocaleString()}`
   );
   console.log(
     `Last Login: ${new Date(
-      (KeyAuthApp.user_data?.lastlogin || 0) * 1000
+      (EpicAuthApp.user_data?.lastlogin || 0) * 1000
     ).toLocaleString()}`
   );
   console.log(
     `Expires: ${new Date(
-      (KeyAuthApp.user_data?.expires || 0) * 1000
+      (EpicAuthApp.user_data?.expires || 0) * 1000
     ).toLocaleString()}`
   );
 
@@ -122,10 +122,10 @@ async function dashboard() {
 
   switch (option) {
     case 1:
-      await KeyAuthApp.enable2fa();
+      await EpicAuthApp.enable2fa();
       break;
     case 2:
-      await KeyAuthApp.disable2fa();
+      await EpicAuthApp.disable2fa();
       break;
     default:
       console.log("Invalid option selected.");
@@ -135,6 +135,6 @@ async function dashboard() {
   console.log("Closing app in 10 seconds...")
   await new Promise((resolve) => setTimeout(resolve, 10000));
   readline.close();
-  await KeyAuthApp.logout();
+  await EpicAuthApp.logout();
   process.exit(0);
 }

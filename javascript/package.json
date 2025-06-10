@@ -1,5 +1,5 @@
 {
-  "name": "keyauth-js-example",
+  "name": "EpicAuth-js-example",
   "module": "src/index.js",
   "type": "module",
   "devDependencies": {

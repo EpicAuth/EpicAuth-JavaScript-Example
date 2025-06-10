@@ -14,7 +14,7 @@ const readline = createInterface({
   terminal: false
 })
 
-export default class KeyAuth {
+export default class EpicAuth {
   url = "https://keyauth.site/api/1.3/"
   public_key =
     "95b38710f40927b16528a073b87d942e03bd4578d49963a19ebae177945f89ac"
@@ -73,7 +73,7 @@ export default class KeyAuth {
 
     const response = await this.__do_request(post_data)
 
-    if (response === "KeyAuth_Invalid") {
+    if (response === "EpicAuth_Invalid") {
       console.log("This application does not exist")
       this.sleep(5000)
       process.exit(0)
@@ -255,7 +255,7 @@ export default class KeyAuth {
       return response["message"]
     } else {
       console.log(
-        'NOTE: This is commonly misunderstood. This is for user variables, not the normal variables.\nUse KeyAuthApp.var("{var_name}") for normal variables'
+        'NOTE: This is commonly misunderstood. This is for user variables, not the normal variables.\nUse EpicAuthApp.var("{var_name}") for normal variables'
       )
       console.log(response["message"])
       this.sleep(5000)
@@ -782,7 +782,7 @@ export default class KeyAuth {
 
     const exeName =
       process.argv[1].split("\\").pop() || process.argv[1].split("/").pop()
-    const logDirectory = `${os.homedir()}/AppData/Roaming/KeyAuth/debug/${exeName}`
+    const logDirectory = `${os.homedir()}/AppData/Roaming/EpicAuth/debug/${exeName}`
 
     try {
       if (!fs.existsSync(logDirectory)) {

@@ -14,7 +14,7 @@ const readline = createInterface({
   terminal: false,
 })
 
-interface KeyAuthOptions {
+interface EpicAuthOptions {
   name: string;
   ownerid: string;
   version: string;
@@ -23,7 +23,7 @@ interface KeyAuthOptions {
   path?: string;
 }
 
-interface KeyAuthUserData {
+interface EpicAuthUserData {
   username: string;
   ip: string;
   hwid: string;
@@ -34,7 +34,7 @@ interface KeyAuthUserData {
   subscriptions: string;
 }
 
-interface KeyAuthAppData {
+interface EpicAuthAppData {
   numUsers: number;
   numKeys: number;
   app_ver: string;
@@ -42,7 +42,7 @@ interface KeyAuthAppData {
   onlineUsers: number;
 }
 
-export default class KeyAuth {
+export default class EpicAuth {
   private name: string;
   private ownerid: string;
   private version: string;
@@ -55,10 +55,10 @@ export default class KeyAuth {
   private sessionid?: string;
   private initialized: boolean = false;
   
-  public user_data: KeyAuthUserData | null = null;
-  public app_data: KeyAuthAppData | null = null;
+  public user_data: EpicAuthUserData | null = null;
+  public app_data: EpicAuthAppData | null = null;
 
-  constructor(options: KeyAuthOptions) {
+  constructor(options: EpicAuthOptions) {
     this.name = options.name;
     this.ownerid = options.ownerid;
     this.version = options.version;
@@ -103,7 +103,7 @@ export default class KeyAuth {
 
     const response = await this.__do_request(post_data) as any;
 
-    if (response === "KeyAuth_Invalid") {
+    if (response === "EpicAuth_Invalid") {
       console.log("This application does not exist");
       this.sleep(5000);
       process.exit(0);
@@ -282,7 +282,7 @@ export default class KeyAuth {
     if (response["success"] === true) {
       return response["message"];
     } else {
-      console.log("NOTE: This is commonly misunderstood. This is for user variables, not the normal variables.\nUse KeyAuthApp.var(\"{var_name}\") for normal variables")
+      console.log("NOTE: This is commonly misunderstood. This is for user variables, not the normal variables.\nUse EpicAuthApp.var(\"{var_name}\") for normal variables")
       console.log(response["message"]);
       this.sleep(5000);
       process.exit(0);
@@ -781,7 +781,7 @@ export default class KeyAuth {
     if (!this.loggingEnabled) return;
 
     const exeName = process.argv[1].split("\\").pop() || process.argv[1].split("/").pop();
-    const logDirectory = `${os.homedir()}/AppData/Roaming/KeyAuth/debug/${exeName}`;
+    const logDirectory = `${os.homedir()}/AppData/Roaming/EpicAuth/debug/${exeName}`;
 
     try {
       if (!fs.existsSync(logDirectory)) {
