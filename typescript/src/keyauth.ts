@@ -47,7 +47,7 @@ export default class EpicAuth {
   private ownerid: string;
   private version: string;
   private hash_to_check?: string;
-  private url: string = "https://keyauth.site/api/1.3/";
+  private url: string = "https://EpicAuth.cc/api/1.3/";
   private path?: string;
   private public_key: string = "95b38710f40927b16528a073b87d942e03bd4578d49963a19ebae177945f89ac";
   private loggingEnabled: boolean = true;
@@ -63,7 +63,7 @@ export default class EpicAuth {
     this.ownerid = options.ownerid;
     this.version = options.version;
     this.hash_to_check = options.hash_to_check;
-    this.url = options.url ?? "https://keyauth.site/api/1.3/";
+    this.url = options.url ?? "https://EpicAuth.cc/api/1.3/";
     this.path = options.path;
 
     if (!this.name || !this.ownerid || !this.version) {

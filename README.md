@@ -1,6 +1,6 @@
 # EpicAuth-JS/TS-Example : Please star 🌟
 
-EpicAuth JavaScript / TypeScript example SDK for https://keyauth.site license key API auth.
+EpicAuth JavaScript / TypeScript example SDK for https://EpicAuth.cc license key API auth.
 
 _Javascript code is converted from TypeScript using this converter: https://transform.tools/typescript-to-javascript_
 
@@ -8,7 +8,7 @@ _Javascript code is converted from TypeScript using this converter: https://tran
 
 ## **Bugs**
 
-If you are using our example with no significant changes, and you are having problems, please Report Bug here https://keyauth.site/app/?page=forms
+If you are using our example with no significant changes, and you are having problems, please Report Bug here https://EpicAuth.cc/app/?page=forms
 
 However, we do **NOT** provide support for adding EpicAuth to your project. If you can't figure this out you should use Google or YouTube to learn more about the programming language you want to sell a program in.
 
@@ -36,13 +36,13 @@ EpicAuth is an Open source authentication system with cloud hosting plans as wel
 
 ## **Customer connection issues?**
 
-This is common amongst all authentication systems. Program obfuscation causes false positives in virus scanners, and with the scale of EpicAuth this is perceived as a malicious domain. So, `EpicAuth.com` and `keyauth.site` have been blocked by many internet providers. For dashboard, reseller panel, customer panel, use `keyauth.site`.
+This is common amongst all authentication systems. Program obfuscation causes false positives in virus scanners, and with the scale of EpicAuth this is perceived as a malicious domain. So, `EpicAuth.com` and `EpicAuth.cc` have been blocked by many internet providers. For dashboard, reseller panel, customer panel, use `EpicAuth.cc`.
 
-For API, `keyauth.site` will not work because I purposefully blocked it on there so `keyauth.site` doesn't get blocked also. So, you should create your own domain and follow this tutorial video https://www.youtube.com/watch?v=a2SROFJ0eYc. The tutorial video shows you how to create a domain name for 100% free if you don't want to purchase one.
+For API, `EpicAuth.cc` will not work because I purposefully blocked it on there so `EpicAuth.cc` doesn't get blocked also. So, you should create your own domain and follow this tutorial video https://www.youtube.com/watch?v=a2SROFJ0eYc. The tutorial video shows you how to create a domain name for 100% free if you don't want to purchase one.
 
 ## **`EpicAuthApp` instance definition**
 
-Visit https://keyauth.site/app/ and select your application, then click on the **Javascript** tab.
+Visit https://EpicAuth.cc/app/ and select your application, then click on the **Javascript** tab.
 
 It'll provide you with the code which you should replace in the `EpicAuth.ts` file.
 
@@ -252,9 +252,9 @@ Tutorial video https://www.youtube.com/watch?v=ENRaNPPYJbc
 
 Send HTTP requests to URLs securely without leaking the URL in your application. You should definitely use if you want to send requests to SellerAPI from your application, otherwise if you don't use you'll be leaking your seller key to everyone. And then someone can mess up your application.
 
-1st example is how to send request with no POST data. just a GET request to the URL. `7kR0UedlVI` is the webhook ID, `https://keyauth.site/api/seller/?sellerkey=sellerkeyhere&type=black` is what you should put as the webhook endpoint on the dashboard. This is the part you don't want users to see. And then you have `&ip=1.1.1.1&hwid=abc` in your program code which will be added to the webhook endpoint on the EpicAuth server and then the request will be sent.
+1st example is how to send request with no POST data. just a GET request to the URL. `7kR0UedlVI` is the webhook ID, `https://EpicAuth.cc/api/seller/?sellerkey=sellerkeyhere&type=black` is what you should put as the webhook endpoint on the dashboard. This is the part you don't want users to see. And then you have `&ip=1.1.1.1&hwid=abc` in your program code which will be added to the webhook endpoint on the EpicAuth server and then the request will be sent.
 
-2nd example includes post data. it is form data. it is an example request to the EpicAuth API. `7kR0UedlVI` is the webhook ID, `https://keyauth.site/api/1.2/` is the webhook endpoint.
+2nd example includes post data. it is form data. it is an example request to the EpicAuth API. `7kR0UedlVI` is the webhook ID, `https://EpicAuth.cc/api/1.2/` is the webhook endpoint.
 
 3rd examples included post data though it's JSON. It's an example request to Discord webhook `7kR0UedlVI` is the webhook ID, `https://discord.com/api/webhooks/...` is the webhook endpoint.
 
@@ -272,7 +272,7 @@ const data3 = await EpicAuthApp.webhook("7kR0UedlVI", "", "{\"content\": \"webho
 ## **Download file**
 
 > [!NOTE]
-> Read documentation for EpicAuth files here https://docs.keyauth.site/website/dashboard/files
+> Read documentation for EpicAuth files here https://docs.EpicAuth.cc/website/dashboard/files
 
 Keep files secure by providing EpicAuth your file download link on the EpicAuth dashboard. Make sure this is a direct download link (as soon as you go to the link, it starts downloading without you clicking anything). The EpicAuth download function provides the bytes, and then you get to decide what to do with those. This example shows how to write it to a file named `text.txt` in the same folder as the program, though you could execute with RunPE or whatever you want.
 
